@@ -36,14 +36,18 @@ function getGridDimensions() {
 function getRobotInput() {
   prompt.get(robotInputSchema, (error = null, result: Result) => {
     if (result) {
-      mission.setRobotPosition(result.robotPosition);
-      mission.setInstructions(result.robotInstructions);
-      const robot = new Robot(mission.getRobotInput());
-      robot.move();
-      mission.setFinalPositions(robot.getPosition());
+      moveRobot(result);
     }
     getAnotherRobot();
   });
+}
+
+function moveRobot({ robotPosition, robotInstructions }: Result) {
+  mission.setRobotPosition(robotPosition);
+  mission.setInstructions(robotInstructions);
+  const robot = new Robot(mission.getRobotInput());
+  robot.move();
+  mission.setFinalPositions(robot.getPosition());
 }
 
 function getAnotherRobot() {
