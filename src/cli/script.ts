@@ -16,7 +16,7 @@ const colors = require('colors/safe');
 const mission = new MissionControl();
 
 prompt.start();
-prompt.message = colors.yellow('Welcome to Mars Mission Control');
+prompt.message = colors.green('Mission Control');
 prompt.delimiter = colors.yellow('|> ');
 
 type Result = { [index: string]: string };

@@ -1,15 +1,7 @@
-export const orientations = ["N", "E", "S", "W"];
+import { IPosition, IDimensions } from "../interfaces/mars.interface";
 
-export const defaultPosition = { x: 0, y: 0, orientation: "N" };
+export const orientations: string[] = ["N", "E", "S", "W"];
 
-export const defaultDimensions = { x: 0, y: 0 };
+export const defaultPosition: IPosition = { x: 0, y: 0, orientation: "N" };
 
-/*
-export const defaultState = {
-  coordinates: { x: 0, y: 0 },
-  instructions: [],
-  previousPosition: defaultPosition,
-  currentPosition: defaultPosition,
-  finalPositions: [],
-};
-*/
+export const defaultDimensions: IDimensions = { x: 0, y: 0 };

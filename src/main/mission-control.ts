@@ -14,6 +14,7 @@ import {
   IPosition,
   IRobotState,
   IControlState,
+  IDimensions,
 } from "../interfaces/mars.interface";
 
 export default class MissionControl {
@@ -28,7 +29,7 @@ export default class MissionControl {
     };
   }
 
-  setDimensions = (input: string) => {
+  setDimensions = (input: string): void => {
     const regex = /^\d{1,2}?\s\d{1,2}?$/g;
     const { dimensions: currentDimensions } = this.state;
     if (regex.test(input)) {
@@ -37,16 +38,16 @@ export default class MissionControl {
         x: dimensions?.[0] ? parseInt(dimensions[0], 10) : currentDimensions.x,
         y: dimensions?.[1] ? parseInt(dimensions[1], 10) : currentDimensions.y,
       };
-      return this;
+      return;
     }
     throw new Error(ErrorMessages.INVALID_INPUT);
   };
 
-  getDimensions = () => {
+  getDimensions = (): IDimensions => {
     return this.state.dimensions;
   };
 
-  setRobotPosition = (input: string) => {
+  setRobotPosition = (input: string): void => {
     const regex = /^\d{1,2}?\s\d{1,2}\s[NnEeSsWw]$/g;
     const { dimensions } = this.state;
     if (regex.test(input)) {
@@ -54,7 +55,7 @@ export default class MissionControl {
       const formattedPosition = convertPositionToObject(newPosition);
       if (isWithinBoundaries(formattedPosition, dimensions)) {
         this.state.robotPosition = formattedPosition;
-        return this;
+        return;
       }
       throw new Error(ErrorMessages.INVALID_POSITION);
     }
@@ -65,11 +66,11 @@ export default class MissionControl {
     return this.state.robotPosition;
   };
 
-  setInstructions = (instructions: string) => {
+  setInstructions = (instructions: string): void => {
     const regex = /^[RrLlMm]+$/g;
     if (regex.test(instructions)) {
       this.state.instructions = convertInputToArray(instructions);
-      return this;
+      return;
     }
     throw new Error(ErrorMessages.INVALID_INSTRUCTIONS);
   };
@@ -91,14 +92,14 @@ export default class MissionControl {
     };
   };
 
-  setFinalPositions = (position: IPosition) => {
+  setFinalPositions = (position: IPosition): void => {
     const finalPosition = `${position.x} ${
       position.y
     } ${position.orientation.toUpperCase()}`;
-    return this.state.finalPositions.push(finalPosition);
+    this.state.finalPositions.push(finalPosition);
   };
 
-  getFinalPositions = () => {
+  getFinalPositions = (): string[] => {
     return this.state.finalPositions;
   };
 }

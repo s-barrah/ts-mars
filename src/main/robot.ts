@@ -5,7 +5,11 @@ import { getNextOrientation, isWithinBoundaries } from "../utils/functions";
 import { Orientations, Commands, ErrorMessages } from "../enums/mars.enum";
 
 // Interfaces
-import { IRobotState } from "../interfaces/mars.interface";
+import {
+  IRobotState,
+  IPosition,
+  IDimensions,
+} from "../interfaces/mars.interface";
 
 export default class Robot {
   private state: IRobotState;
@@ -14,19 +18,19 @@ export default class Robot {
     this.state = state;
   }
 
-  getPosition = () => {
+  getPosition = (): IPosition => {
     return this.state.position;
   };
 
-  getInstructions = () => {
+  getInstructions = (): string[] => {
     return this.state.instructions;
   };
 
-  getBoundary = () => {
+  getBoundary = (): IDimensions => {
     return this.state.boundary;
   };
 
-  move = () => {
+  move = (): void => {
     const { boundary, instructions } = this.state;
     if (!instructions?.length)
       throw new Error(ErrorMessages.INVALID_INSTRUCTIONS);
@@ -48,10 +52,9 @@ export default class Robot {
         throw new Error(ErrorMessages.INVALID_MOVE);
       }
     });
-    return this.state;
   };
 
-  moveForward = (orientation: string) => {
+  moveForward = (orientation: string): void => {
     switch (orientation.toUpperCase()) {
       case Orientations.N:
         this.state.position.y += 1;
@@ -66,8 +69,6 @@ export default class Robot {
         this.state.position.x -= 1;
         break;
       default:
-        return this.state;
     }
-    return this.state;
   };
 }

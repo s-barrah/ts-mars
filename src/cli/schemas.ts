@@ -1,6 +1,17 @@
 const colors = require('colors/safe');
 
-export const dimensionsSchema = {
+type PromptSchema = {
+  properties: {
+    [index: string]: {
+      description: string;
+      pattern: RegExp;
+      message: string;
+      required: boolean;
+    };
+  };
+};
+
+export const dimensionsSchema: PromptSchema = {
   properties: {
     dimensions: {
       description: colors.yellow.underline('Please enter plateau dimensions'),
@@ -11,7 +22,7 @@ export const dimensionsSchema = {
   },
 };
 
-export const robotPositionSchema = {
+export const robotPositionSchema: PromptSchema = {
   properties: {
     robotPosition: {
       description: colors.yellow.underline('Please, enter robot position'),
@@ -23,7 +34,7 @@ export const robotPositionSchema = {
   },
 };
 
-export const robotInstructionsSchema = {
+export const robotInstructionsSchema: PromptSchema = {
   properties: {
     robotInstructions: {
       description: colors.yellow.underline('Please enter robot instructions'),
@@ -34,7 +45,7 @@ export const robotInstructionsSchema = {
   },
 };
 
-export const deployAnotherRobotSchema = {
+export const deployAnotherRobotSchema: PromptSchema = {
   properties: {
     anotherRobot: {
       description: colors.yellow.underline(

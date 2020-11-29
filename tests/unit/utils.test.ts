@@ -30,7 +30,6 @@ describe('Utility Functions', () => {
         });
     });
 
-
     describe('isWithinBoundaries function', () => {
         it('should return true if position is valid', () => {
             expect(isWithinBoundaries({ x: 0, y: 0, orientation: 'N'}, { x: 0, y: 0} )).to.be.eql(true);

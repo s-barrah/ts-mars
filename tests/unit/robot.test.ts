@@ -58,56 +58,6 @@ describe('Robots Class', () => {
         it('should get the Robot\'s current position', () => {
             expect(robot.getPosition()).to.be.eql(input.position);
         });
-/*
-
-        it('should get Robots next orientation when facing North and turns right', () => {
-            expect(robot.getNextOrientation('R', 'N')).to.be.eql('E');
-        });
-
-        it('should get Robots next orientation when facing North and turning left', () => {
-            expect(robot.getNextOrientation('L', 'N')).to.be.eql('W');
-        });
-
-        it('should get Robots next orientation when facing North and moves forward', () => {
-            expect(robot.getNextOrientation('M', 'N')).to.be.eql('N');
-        });
-
-        it('should get Robots next orientation when facing East and turns right', () => {
-            expect(robot.getNextOrientation('R', 'E')).to.be.eql('S');
-        });
-
-        it('should get Robots next orientation when facing East and turning left', () => {
-            expect(robot.getNextOrientation('L', 'E')).to.be.eql('N');
-        });
-
-        it('should get Robots next orientation when facing East and moves forward', () => {
-            expect(robot.getNextOrientation('M', 'E')).to.be.eql('E');
-        });
-
-        it('should get Robots next orientation when facing South and turns right', () => {
-            expect(robot.getNextOrientation('R', 'S')).to.be.eql('W');
-        });
-
-        it('should get Robots next orientation when facing South and turning left', () => {
-            expect(robot.getNextOrientation('L', 'S')).to.be.eql('E');
-        });
-
-        it('should get Robots next orientation when facing South and moves forward', () => {
-            expect(robot.getNextOrientation('M', 'S')).to.be.eql('S');
-        });
-
-        it('should get Robots next orientation when facing West and turns right', () => {
-            expect(robot.getNextOrientation('R', 'W')).to.be.eql('N');
-        });
-
-        it('should get Robots next orientation when facing West and turning left', () => {
-            expect(robot.getNextOrientation('L', 'W')).to.be.eql('S');
-        });
-
-        it('should get Robots next orientation when facing West and moves forward', () => {
-            expect(robot.getNextOrientation('M', 'W')).to.be.eql('W');
-        });
-*/
 
     });
 
