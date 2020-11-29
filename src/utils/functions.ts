@@ -36,6 +36,8 @@ export function isWithinBoundaries(
   if (
     position.x <= dimensions.x &&
     position.y <= dimensions.y &&
+    position.x >= 0 &&
+    position.y >= 0 &&
     (currentIndex >= 0 || currentIndex <= 3)
   ) {
     return true;
@@ -47,9 +49,9 @@ export function getNextOrientation(direction: string, orientation: string) {
   if (direction.toUpperCase() !== Commands.M) {
     const currentIndex = orientations.indexOf(orientation);
     const index =
-        direction.toUpperCase() === Commands.R
-            ? currentIndex + 1
-            : currentIndex - 1;
+      direction.toUpperCase() === Commands.R
+        ? currentIndex + 1
+        : currentIndex - 1;
     if (index < 0 || index > 3) {
       return index < 0 ? orientations[3] : orientations[0];
     }

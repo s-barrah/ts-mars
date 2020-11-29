@@ -152,7 +152,6 @@ describe('Robots Class', () => {
             expect(finalPositions.length === 2).to.be.eql(true);
             expect(finalPositions[1]).to.be.eql(expectedPosition);
         });
-
     })
 
     describe('Ensure validation of inputs', () => {
@@ -165,6 +164,15 @@ describe('Robots Class', () => {
             const input = missionControl.getRobotInput();
 
             expect(() => new Robot(input).move()).to.throw(ErrorMessages.INVALID_INSTRUCTIONS);
+        });
+
+        it('should throw an error if move is not possible', () => {
+            const initialPosition = '1 4 S';
+            missionControl.setRobotPosition(initialPosition);
+            missionControl.setInstructions('RRMRRMRMMR');
+            const input = missionControl.getRobotInput();
+
+            expect(() => new Robot(input).move()).to.throw(ErrorMessages.INVALID_POSITION);
         });
 
     })

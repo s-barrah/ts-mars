@@ -3,3 +3,4 @@ dist
 tests
 coverage
 src/**/*.enum.ts
+src/cli/**/*.ts

@@ -28,7 +28,9 @@
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
   },
   "include": [
-    "src/cli.ts", "src"],
+    "src",
+    "**/*.d.ts"
+  ],
   "exclude": [
     "node_modules",
     "dist",

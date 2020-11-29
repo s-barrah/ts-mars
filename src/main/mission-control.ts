@@ -1,20 +1,20 @@
 // Utils
-import { defaultPosition, defaultDimensions } from '../utils/constants';
+import { defaultPosition, defaultDimensions } from "../utils/constants";
 import {
   convertInputToArray,
   convertPositionToObject,
   isWithinBoundaries,
-} from '../utils/functions';
+} from "../utils/functions";
 
 // Enum
-import { ErrorMessages } from '../enums/mars.enum';
+import { ErrorMessages } from "../enums/mars.enum";
 
 // Interfaces
 import {
   IPosition,
   IRobotState,
   IControlState,
-} from '../interfaces/mars.interface';
+} from "../interfaces/mars.interface";
 
 export default class MissionControl {
   private state: IControlState;
@@ -34,12 +34,8 @@ export default class MissionControl {
     if (regex.test(input)) {
       const dimensions = convertInputToArray(input, " ");
       this.state.dimensions = {
-        x: dimensions?.[0]
-          ? parseInt(dimensions[0], 10)
-          : currentDimensions.x,
-        y: dimensions?.[1]
-          ? parseInt(dimensions[1], 10)
-          : currentDimensions.y,
+        x: dimensions?.[0] ? parseInt(dimensions[0], 10) : currentDimensions.x,
+        y: dimensions?.[1] ? parseInt(dimensions[1], 10) : currentDimensions.y,
       };
       return this;
     }
