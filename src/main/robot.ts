@@ -34,13 +34,11 @@ export default class Robot {
     const { boundary, instructions } = this.state;
     if (!instructions?.length)
       throw new Error(ErrorMessages.INVALID_INSTRUCTIONS);
-
     instructions.forEach((command) => {
       const isInBounds = isWithinBoundaries(this.state.position, boundary);
-
       if (command === Commands.R || command === Commands.L) {
         const nextOrientation = getNextOrientation(
-          command.toUpperCase(),
+          command,
           this.state.position.orientation
         );
         if (nextOrientation) {

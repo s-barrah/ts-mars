@@ -51,7 +51,7 @@ export default class MissionControl {
     const regex = /^\d{1,2}?\s\d{1,2}\s[NnEeSsWw]$/g;
     const { dimensions } = this.state;
     if (regex.test(input)) {
-      const newPosition = convertInputToArray(input, " ");
+      const newPosition = convertInputToArray(input.toUpperCase(), " ");
       const formattedPosition = convertPositionToObject(newPosition);
       if (isWithinBoundaries(formattedPosition, dimensions)) {
         this.state.robotPosition = formattedPosition;
@@ -69,7 +69,7 @@ export default class MissionControl {
   setInstructions = (instructions: string): void => {
     const regex = /^[RrLlMm]+$/g;
     if (regex.test(instructions)) {
-      this.state.instructions = convertInputToArray(instructions);
+      this.state.instructions = convertInputToArray(instructions.toUpperCase());
       return;
     }
     throw new Error(ErrorMessages.INVALID_INSTRUCTIONS);

@@ -22,22 +22,19 @@ export const dimensionsSchema: PromptSchema = {
   },
 };
 
-export const robotPositionSchema: PromptSchema = {
+export const robotInputSchema: PromptSchema = {
   properties: {
     robotPosition: {
-      description: colors.yellow.underline('Please, enter robot position'),
+      description: colors.yellow.underline('Please, enter position for robot'),
       pattern: /^\d{1,2}?\s\d{1,2}\s[NnEeSsWw]$/g,
       message:
         'Position must be a pair of integers and an orientation (N, S, E, W) separated by a space',
       required: true,
     },
-  },
-};
-
-export const robotInstructionsSchema: PromptSchema = {
-  properties: {
     robotInstructions: {
-      description: colors.yellow.underline('Please enter robot instructions'),
+      description: colors.yellow.underline(
+        'Please enter instructions for robot'
+      ),
       pattern: /^[RrLlMm]+$/g,
       message: 'Instructions is a string of the letters “L”, “R”, and “M”',
       required: true,

@@ -6,9 +6,8 @@ import Robot from '../main/robot';
 
 import {
   dimensionsSchema,
-  robotPositionSchema,
-  robotInstructionsSchema,
   deployAnotherRobotSchema,
+  robotInputSchema,
 } from './schemas';
 
 const colors = require('colors/safe');
@@ -30,22 +29,14 @@ function getGridDimensions() {
     if (result) {
       mission.setDimensions(result.dimensions);
     }
-    getRobotPosition();
+    getRobotInput();
   });
 }
 
-function getRobotPosition() {
-  prompt.get(robotPositionSchema, (error = null, result: Result) => {
+function getRobotInput() {
+  prompt.get(robotInputSchema, (error = null, result: Result) => {
     if (result) {
       mission.setRobotPosition(result.robotPosition);
-    }
-    getRobotInstructions();
-  });
-}
-
-function getRobotInstructions() {
-  prompt.get(robotInstructionsSchema, (error = null, result: Result) => {
-    if (result) {
       mission.setInstructions(result.robotInstructions);
       const robot = new Robot(mission.getRobotInput());
       robot.move();
@@ -59,7 +50,7 @@ function getAnotherRobot() {
   prompt.get(deployAnotherRobotSchema, (error = null, result: Result) => {
     if (result) {
       if (result.anotherRobot.toLowerCase() === 'y') {
-        getRobotPosition();
+        getRobotInput();
       } else {
         exit();
       }
@@ -69,7 +60,7 @@ function getAnotherRobot() {
 
 function exit() {
   const positions = mission.getFinalPositions();
-  console.log(colors.green.underline('Final Positions|> '));
+  console.log(colors.green.underline('Output'));
 
   positions.forEach((position, index) => {
     const robotNumber = index + 1;
